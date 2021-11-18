@@ -52,6 +52,7 @@ def buildVocabulary(corpus):
         for combined in sentence:
             if combined not in new_list:
                 new_list.append(combined)
+    # print(new_list)
     return new_list
 
 
@@ -62,7 +63,14 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
-    return
+    dictionary={}
+    for sentence in corpus:
+        for word in sentence:
+            if word not in dictionary:
+                dictionary[word]=0
+            dictionary[word]+=1
+    # print(dictionary)
+    return dictionary
 
 
 '''
@@ -303,6 +311,7 @@ if __name__ == "__main__":
     test.testLoadBook()
     test.testGetCorpusLength()
     test.testBuildVocabulary()
+    test.testCountUnigrams()
 #     print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
 #     test.week1Tests()
 #     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")

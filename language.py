@@ -17,8 +17,14 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
-
+    text=open(filename)
+    list=[]
+    read=text.read().splitlines()
+    for sentence in read:
+        if len(sentence)>0:
+            list.append(sentence.split(" "))
+            # print(list)
+    return list
 
 '''
 getCorpusLength(corpus)
@@ -27,7 +33,11 @@ Parameters: 2D list of strs
 Returns: int
 '''
 def getCorpusLength(corpus):
-    return
+    length=0
+    for sentence in corpus:
+        for sentences in sentence:
+            length=length+1
+    return length
 
 
 '''
@@ -37,7 +47,13 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def buildVocabulary(corpus):
-    return
+    new_list=[]
+    for sentence in corpus:
+        for combined in sentence:
+            if combined not in new_list:
+                new_list.append(combined)
+    # print(new_list)
+    return new_list
 
 
 '''
@@ -47,7 +63,14 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
-    return
+    dictionary={}
+    for sentence in corpus:
+        for word in sentence:
+            if word not in dictionary:
+                dictionary[word]=0
+            dictionary[word]+=1
+    # print(dictionary)
+    return dictionary
 
 
 '''
@@ -285,21 +308,25 @@ def scatterPlot(xs, ys, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    test.week1Tests()
-    print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek1()
+    test.testLoadBook()
+    test.testGetCorpusLength()
+    test.testBuildVocabulary()
+    test.testCountUnigrams()
+#     print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+#     test.week1Tests()
+#     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
+#     test.runWeek1()
 
-    ## Uncomment these for Week 2 ##
-"""
-    print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
-    test.week2Tests()
-    print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek2()
-"""
+#     ## Uncomment these for Week 2 ##
+# """
+#     print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
+#     test.week2Tests()
+#     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
+#     test.runWeek2()
+# """
 
-    ## Uncomment these for Week 3 ##
-"""
-    print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek3()
-"""
+#     ## Uncomment these for Week 3 ##
+# """
+#     print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
+#     test.runWeek3()
+# """

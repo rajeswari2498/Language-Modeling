@@ -165,7 +165,7 @@ def runWeek1():
 
 def testBuildUniformProbs():
     print("Testing buildUniformProbs()...", end="")
-    assert(buildUniformProbs([ "hello", "world", "again"]) == [1/3, 1/3, 1/3])
+    assert(buildUniformProbs(["hello", "world", "again"]) == [1/3, 1/3, 1/3])
     assert(buildUniformProbs(\
         [ "hello", "and", "welcome", "to", "15-110", ".","we're", "happy", "have", "you"]) == \
         [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ])
